@@ -2,8 +2,6 @@
 # Read `man 5 sway` for a complete reference.
 
 exec export PATH=$HOME/.scripts/screenshot-utils:$PATH
-input type:keyboard xkb_layout us
-input type:keyboard xkb_variant dvorak 
 
 input "type:keyboard" {
     xkb_file ~/.config/dv_keymap.xkb
@@ -19,15 +17,12 @@ input type:touchpad {
 
 #fuzzel styling
 set $myfuzzel fuzzel -I --font=Inconsolata-Regular --background=000000d0 --selection-color=ffffffd0 --selection-text-color=000000ff --border-color=ffffffd0 --text-color=ffffffff --match-color=81f775ff --selection-match-color=079f01ff --prompt-color=ffffffff --input-color=ffffffff
-#swap capslock and control.
-# input type:keyboard xkb_options ctrl:nocaps
-
 
 ###styling###
 smart_gaps on
 #these are very specific to remove any gaps from neovim terminal sessions 
-gaps top 6
-gaps bottom 6
+gaps top 4
+gaps bottom 4
 gaps left 8
 gaps right 8
 
@@ -51,8 +46,8 @@ set $term foot
 # on the original workspace that the command was run on.
 set $menu $myfuzzel | xargs swaymsg exec --
 
-### Output configuration
 output * background ~/.config/sway/shelves.png stretch
+
 # Example configuration:
 
 #   output HDMI-A-1 resolution 1920x1080 position 1920,
@@ -84,26 +79,15 @@ exec swayidle -w \
 
     #screenshot keybindings 
     # bindsym Print exec screenshot
-    bindsym Print exec echo $PATH >> $HOME/output.txt 
+    bindsym Print exec screenshot
     bindsym Shift+Print exec selective_screenshot
     bindsym $mod+Print exec window_screenshot 
 
     bindsym $mod+Escape exec $lock
-    # Start a terminal
     bindsym $mod+Return exec $term
 
-    # Kill focused window
     bindsym $mod+q kill
-
-    # Start your launcher
     bindsym $mod+d exec $menu
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    #floating_modifier $mod normal
 
     bindsym XF86MonBrightnessUp exec sudo change_brightness 100
     bindsym XF86MonBrightnessDown exec sudo change_brightness -100
@@ -187,13 +171,8 @@ exec swayidle -w \
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
-    # Make the current focus fullscreen
     bindsym $mod+f fullscreen
-
-    # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container

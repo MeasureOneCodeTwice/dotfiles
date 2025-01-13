@@ -29,6 +29,18 @@ gaps right 5
 default_border pixel 2
 smart_borders on
 
+#Custom keyboard layout is weird, Shift+1 does not work,
+#so use these variables instead.
+set $Shift1 exclam
+set $Shift2 at  
+set $Shift3 numbersign 
+set $Shift4 dollar 
+set $Shift5 percent
+set $Shift6 asciicircum
+set $Shift7 ampersand
+set $Shift8 asterisk
+set $Shift9 parenleft
+set $Shift0 parenright
 #focused inactive is the window that was last focused (but not currently focused)
 #                       outline bg      textCol  ???    window outline
 client.focused          #FFFFFF #000000 #FFFFFF #000000 #FFFFFF
@@ -36,74 +48,74 @@ client.focused_inactive #000000 #000000 #FFFFFF #000000 #0F0F0F
 client.unfocused        #000000 #000000 #FFFFFF #000000 #0F0F0F
 
 
-### Variables
+### Navigation Variables
 set $mod alt 
 set $left h
 set $down j
 set $up k
 set $right l
+
+
+### Application Variables
 set $term foot
 # on the original workspace that the command was run on.
 set $menu $myfuzzel | xargs swaymsg exec --
-
-output * background ~/.config/sway/shelves.png stretch
-
-# Example configuration:
-
-#   output HDMI-A-1 resolution 1920x1080 position 1920,
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
 set $lock ~/.scripts/lock_desktop
 
+#Background
+output * background ~/.config/sway/shelves.png stretch
+
+
+# lock screen after 300 seconds of inactivity, turn off
+# displays after another 300 seconds. turn screen back on when
+# resumed. 
 exec swayidle -w \
          timeout 300 '$lock' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep '$lock
-# lock screen after 300 seconds of inactivity, turn off
-# displays after another 300 seconds. turn screen back on when
-# resumed. 
 
 
 # You can get the names of your inputs by running: swaymsg -t get_inputsw
 # Read `man 5 sway-input` for more information about this section.
 
 
-    #this command stores anything copied into cliphist's database
-    #so it can be recalled in the clipboard history.
-    exec wl-paste --watch cliphist store
-    #cliphist list has a tab after the number which is ugly in fuzzel, 
-    #se we replace it with a space, but cliphist decode needs the tab,
-    #so we use sed to replace the first space in the string with a tab.
-    bindsym $mod+Shift+v exec cliphist list | sed 's/\t/ /' | $myfuzzel --dmenu | sed 's/ /\t/' | cliphist decode | wl-copy
+#this command stores anything copied into cliphist's database
+#so it can be recalled in the clipboard history.
+exec wl-paste --watch cliphist store
+#cliphist list has a tab after the number which is ugly in fuzzel, 
+#se we replace it with a space, but cliphist decode needs the tab,
+#so we use sed to replace the first space in the string with a tab.
+bindsym $mod+Shift+v exec cliphist list | sed 's/\t/ /' | $myfuzzel --dmenu | sed 's/ /\t/' | cliphist decode | wl-copy
 
-    #screenshot keybindings 
-    # bindsym Print exec screenshot
-    bindsym Print exec screenshot
-    bindsym Shift+Print exec selective_screenshot
-    bindsym $mod+Print exec window_screenshot 
+#NOT IMPLEMENTED
+# bindsym Print exec screenshot
+# bindsym Shift+Print exec selective_screenshot
+# bindsym $mod+Print exec window_screenshot 
 
-    bindsym $mod+Escape exec $lock
-    bindsym $mod+Return exec $term
+### Application launchers
+bindsym $mod+Escape exec $lock
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+
+
+### F key bindings
+#brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- 
+
+bindsym shift+XF86MonBrightnessUp exec brightnessctl set 1%+
+bindsym shift+XF86MonBrightnessDown exec brightnessctl set 1%+
+
+#volume controls
+bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
+bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
+
+bindsym shift+XF86AudioRaiseVolume exec amixer sset 'Master' 1%+
+bindsym shift+XF86AudioLowerVolume exec amixer sset 'Master' 1%-
+
+bindsym XF86AudioMute        exec amixer sset 'Master' toggle
 
     bindsym $mod+q kill
-    bindsym $mod+d exec $menu
-
-    #brightness controls
-    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%- 
-
-    bindsym shift+XF86MonBrightnessUp exec brightnessctl set 1%+
-    bindsym shift+XF86MonBrightnessDown exec brightnessctl set 1%+
-
-    #volume controls
-    bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
-    bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
-
-    bindsym shift+XF86AudioRaiseVolume exec amixer sset 'Master' 1%+
-    bindsym shift+XF86AudioLowerVolume exec amixer sset 'Master' 1%-
-
-    bindsym XF86AudioMute        exec amixer sset 'Master' toggle
 
 
     # Reload the configuration file
@@ -119,22 +131,12 @@ exec swayidle -w \
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -149,21 +151,25 @@ exec swayidle -w \
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+
+    # Not using Shift+1 etc, because homerow numbers
+    #are weird.
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+
+    bindsym $mod+$Shift1 move container to workspace number 1
+    bindsym $mod+$Shift2 move container to workspace number 2
+    bindsym $mod+$Shift3 move container to workspace number 3
+    bindsym $mod+$Shift4 move container to workspace number 4
+    bindsym $mod+$Shift5 move container to workspace number 5
+    bindsym $mod+$Shift6 move container to workspace number 6
+    bindsym $mod+$Shift7 move container to workspace number 7
+    bindsym $mod+$Shift8 move container to workspace number 8
+    bindsym $mod+$Shift9 move container to workspace number 9
+    bindsym $mod+$Shift0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
-# Layout stuff:
+# Layout control:
 #
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
@@ -187,41 +193,27 @@ exec swayidle -w \
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
-
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
-
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
+bindsym $mod+r mode "resize"
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
     # Return to default mode
     bindsym Return mode "default"
-    bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
 
 #
 # Status Bar:
-#
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top

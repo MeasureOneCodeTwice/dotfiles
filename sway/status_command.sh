@@ -9,11 +9,8 @@ do
 	battery_status=${battery_status:0:1}
 	battery_status=${battery_status,,}
     volume=$(amixer sget 'Master' | tail -1 | \
-        tr " " \\n | tail -3 | head -1 | tr -d "[]") 
-    muted=$(amixer sget 'Speaker' | tail -1 | tr " " \\n | tail -1\
-        | tr -d "[]")
-    muted=$(echo ${muted:1:1} | tr -d "n" | tr "f" "m")
+        tr " " \\n | tail -2 | head -1 | tr -d "[]") 
     
-	echo "$volume$muted  $wifi_name  $battery_level$battery_status  $date"
+	echo "$volume  $wifi_name  $battery_level$battery_status  $date"
 	sleep 1
 done

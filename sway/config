@@ -3,6 +3,7 @@
 
 exec export PATH=$HOME/.scripts/screenshot-utils:$PATH
 
+
 input "type:keyboard" {
     xkb_file ~/.config/dv_keymap.xkb
 }
@@ -13,7 +14,14 @@ input type:touchpad {
 	natural_scroll enabled 
         dwt enabled
         tap enabled
+        accel_profile "flat"
+        pointer_accel 0.3
+        scroll_factor 0.3
 }
+#display config
+
+#second monitor
+output HDMI-A-1 resolution 3840x2160 scale 2 
 
 #fuzzel styling
 set $myfuzzel fuzzel -I --font=Inconsolata-Regular --background=000000d0 --selection-color=ffffffd0 --selection-text-color=000000ff --border-color=ffffffd0 --text-color=ffffffff --match-color=81f775ff --selection-match-color=079f01ff --prompt-color=ffffffff --input-color=ffffffff
@@ -49,7 +57,7 @@ client.unfocused        #000000 #000000 #FFFFFF #000000 #0F0F0F
 
 
 ### Navigation Variables
-set $mod alt 
+set $mod Super_L
 set $left h
 set $down j
 set $up k
@@ -97,6 +105,8 @@ bindsym $mod+Escape exec $lock
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
 
+bindsym $mod+p exec /home/logan/Documents/screenshot-utils/selective_screenshot
+
 
 ### F key bindings
 #brightness controls
@@ -120,7 +130,6 @@ bindsym XF86AudioMute        exec amixer sset 'Master' toggle
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
-
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
@@ -140,6 +149,7 @@ bindsym XF86AudioMute        exec amixer sset 'Master' toggle
 #
 # Workspaces:
 #
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -156,16 +166,18 @@ bindsym XF86AudioMute        exec amixer sset 'Master' toggle
     #are weird.
     # Move focused container to workspace
 
-    bindsym $mod+$Shift1 move container to workspace number 1
-    bindsym $mod+$Shift2 move container to workspace number 2
-    bindsym $mod+$Shift3 move container to workspace number 3
-    bindsym $mod+$Shift4 move container to workspace number 4
-    bindsym $mod+$Shift5 move container to workspace number 5
-    bindsym $mod+$Shift6 move container to workspace number 6
-    bindsym $mod+$Shift7 move container to workspace number 7
-    bindsym $mod+$Shift8 move container to workspace number 8
-    bindsym $mod+$Shift9 move container to workspace number 9
-    bindsym $mod+$Shift0 move container to workspace number 10
+    # for some reason $mod+shift+number doesn't work
+    bindsym $mod+exclam      move container to workspace number 1
+    bindsym $mod+at          move container to workspace number 2
+    bindsym $mod+numbersign  move container to workspace number 3
+    bindsym $mod+dollar      move container to workspace number 4
+    bindsym $mod+percent     move container to workspace number 5
+    bindsym $mod+asciicircum move container to workspace number 6
+    bindsym $mod+ampersand   move container to workspace number 7
+    bindsym $mod+asterisk    move container to workspace number 8
+    bindsym $mod+parenleft   move container to workspace number 9
+    bindsym $mod+parenright  move container to workspace number 10
+
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -179,8 +191,8 @@ bindsym XF86AudioMute        exec amixer sset 'Master' toggle
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+t layout tabbed
+    bindsym $mod+n layout toggle split
 
     bindsym $mod+f fullscreen
     bindsym $mod+Shift+space floating toggle

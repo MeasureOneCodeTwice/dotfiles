@@ -12,5 +12,5 @@ do
         tr " " \\n | tail -2 | head -1 | tr -d "[]") 
     
 	echo "$volume  $wifi_name  $battery_level$battery_status  $date"
-	sleep 1
+	sleep 0.1
 done

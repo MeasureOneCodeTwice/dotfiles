@@ -1,0 +1,10 @@
+set $EXTERNAL_DISPLAY HDMI-A-1 
+set $LAPTOP_DISPLAY eDP-1
+
+output $EXTERNAL_DISPLAY resolution 2560x1440 scale 1 
+
+bindswitch --reload --locked lid:on  output $LAPTOP_DISPLAY  disable
+bindswitch --reload --locked lid:off output $LAPTOP_DISPLAY  enable
+#state can desync when sway is reloaded because the switch doesn't re-trigger
+#for a reload
+exec_always sync_lid_shutoff_state.sh $LAPTOP_DISPLAY 

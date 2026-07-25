@@ -1,4 +1,5 @@
 # Read `man 5 sway` for a complete reference.
+# Also, read the wiki https://github.com/swaywm/sway/wiki
 include /etc/sway/config.d/*
 
 include ./configuration/*/main

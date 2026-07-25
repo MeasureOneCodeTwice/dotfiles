@@ -1,2 +1,2 @@
-include ./display
+include ./display/main
 include ./input

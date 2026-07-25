@@ -1,0 +1,16 @@
+smart_gaps on
+gaps inner 5
+
+default_border pixel 3
+smart_borders on
+
+
+#focused inactive is the window that was last focused (but not currently focused)
+#                       outline bg      textCol  ???    window outline
+client.focused          #FFFFFF #000000 #FFFFFF #000000 #9bae7a
+client.focused_inactive #000000 #000000 #FFFFFF #000000 #1f361c
+client.unfocused        #000000 #000000 #FFFFFF #000000 #1f361c
+
+output * background ~/.config/sway/backgrounds/leaves.jpg stretch
+
+

@@ -1,0 +1,27 @@
+# # lock screen after 300 seconds of inactivity, turn off
+# # displays after another 300 seconds. turn screen back on when
+# # resumed. 
+# exec swayidle -w \
+#          timeout 300 '$lock' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep '$lock
+
+
+
+
+### Application launchers
+bindsym $mod+l exec $lock
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+
+
+#cliphist list has a tab after the number which is ugly in fuzzel, 
+#se we replace it with a space, but cliphist decode needs the tab,
+#so we use sed to replace the first space in the string with a tab.
+bindsym $mod+Shift+v exec cliphist list | sed 's/\t/ /' | $myfuzzel --dmenu | sed 's/ /\t/' | cliphist decode | wl-copy
+
+
+#this command stores anything copied into cliphist's database
+#so it can be recalled in the clipboard history.
+exec wl-paste --watch cliphist store
+

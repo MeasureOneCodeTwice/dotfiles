@@ -1,0 +1,1 @@
+set $myfuzzel fuzzel -I --font=Inconsolata-Regular --background=000000d0 --selection-color=ffffffd0 --selection-text-color=000000ff --border-color=ffffffd0 --text-color=ffffffff --match-color=81f775ff --selection-match-color=079f01ff --prompt-color=ffffffff --input-color=ffffffff

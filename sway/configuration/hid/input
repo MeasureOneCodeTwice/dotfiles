@@ -1,0 +1,14 @@
+input "type:keyboard" {
+    xkb_file ~/.config/dv_keymap.xkb
+}
+
+#dwt disables trackpad while typing 
+#tap allows trackpad taps to click
+input type:touchpad {
+	natural_scroll enabled 
+        dwt enabled
+        tap enabled
+        accel_profile "flat"
+        pointer_accel 0.3
+        scroll_factor 0.3
+}

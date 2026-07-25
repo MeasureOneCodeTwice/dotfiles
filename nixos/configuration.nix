@@ -75,6 +75,8 @@ in
     environment.systemPackages = with pkgs; [
     #terminal applications 
 
+        cowsay 
+
         ffmpeg
         wev
 

@@ -2,8 +2,13 @@
 !dv_keymap.xkb
 !sway
 !sway/**/*
+
 !nvim
 !nvim/**/*
+
+!desktop_files
+!desktop_files/**/*
+
 !nixos/
 !README.md
 !.gitignore

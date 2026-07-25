@@ -1,6 +1,6 @@
 *
 !dv_keymap.xkb
 !sway/
+!nixos/configuration.nix
 !README.md
-!nixos/
 !.gitignore

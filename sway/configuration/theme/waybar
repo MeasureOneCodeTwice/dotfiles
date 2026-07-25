@@ -1,16 +1,16 @@
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-    font Inconsolata-Regular
+    font $FONT
 
     # When the status_command prints a new line to stdout, swaybar updates.
     status_command ~/.config/sway/status_command.sh
 
     colors {
-        statusline #ffffff
-        background #000000F0
-        #                  border    fill      text
-        inactive_workspace #000000F0 #000000F0 #FFFFFFFF
-        focused_workspace  #000000F0 #000000F0 #245628FF
+        statusline $FONT_COLOUR
+        background $BACKGROUND
+        #                  border      fill        text
+        inactive_workspace $BACKGROUND $BACKGROUND $FONT_COLOUR
+        focused_workspace  $BACKGROUND $BACKGROUND $DARKER_GREEN
     }
 }

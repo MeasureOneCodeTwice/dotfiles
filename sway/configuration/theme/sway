@@ -1,13 +1,17 @@
-smart_gaps on
-gaps inner 5
-
-default_border pixel 3
-smart_borders on
-
-#focused inactive is the window that was last focused (but not currently focused)
-#                       outline bg      textCol  ???    window outline
-client.focused          #FFFFFF #000000 #FFFFFF #000000 #9bae7a
-client.focused_inactive #000000 #000000 #FFFFFF #000000 #1f361c
-client.unfocused        #000000 #000000 #FFFFFF #000000 #1f361c
-
 output * background ~/.config/sway/backgrounds/leaves.jpg stretch
+
+smart_gaps off
+smart_borders on
+gaps inner 5
+default_border pixel $BORDER_WIDTH
+
+#----- TILEBAR -----
+titlebar_border_thickness 0
+title_align center
+#focused inactive is the window that was last focused (but not currently focused)
+#                       outline        bg          textCol        ???            window outline
+client.focused          $HILIGHT_GREEN $BACKGROUND $HILIGHT_GREEN $HILIGHT_GREEN $HILIGHT_GREEN
+client.focused_inactive $DARKER_GREEN    $BACKGROUND $FONT_COLOUR   #FF0000        $DARK_GREEN
+client.unfocused        $DARKER_GREEN    $BACKGROUND $FONT_COLOUR   #FF0000        $DARK_GREEN 
+#Not sure what column 4 means. Its colour appears when there is a pane in a window
+

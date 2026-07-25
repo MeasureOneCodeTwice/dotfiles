@@ -94,7 +94,6 @@ in
         go
 
         bun
-        nodejs_23
 
         python3
         python312Packages.pip
@@ -112,7 +111,6 @@ in
         xxd
         lldb
 
-        gradle_7
         android-tools
         google-java-format
         openjdk23
@@ -138,8 +136,6 @@ in
         fd
 
     texliveFull
-    ventoy-full
- 
 
     #graphical applications
     firefox
@@ -191,196 +187,6 @@ in
     enable = true;
     defaultEditor = true;
     vimAlias = true;
-    configure = {
-      customRC = ''
-
-        set showmatch               " show matching 
-        set ignorecase              " case insensitive 
-        set mouse=v                 " middle-click paste with 
-        set hlsearch                " highlight search
-        set incsearch               " incremental search
-        set tabstop=4               " number of columns occupied by a tab 
-        set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-        set expandtab               " converts tabs to white space
-        set shiftwidth=4               " width for autoindents
-        set autoindent              " indent a new line the same amount as the line just typed
-        set nu rnu                  " add hybrid line numbers
-        set wildmode=longest,list   " get bash‑like tab completions
-        set mouse=a                 " enable mouse click
-        set ttyfast                 " Speed up scrolling in Vim
-        set formatoptions-=c formatoptions-=r formatoptions-=o     " disable auto insertion of comments
-        set number
-        set relativenumber
-        
-        colorscheme jellybeans "colorscheme
-        "colorscheme molokayo    "colorscheme
-        highlight Comment cterm = italic ctermfg=Gray   "changes comment colour
-        highlight Conceal ctermfg = darkGray    "sets conceal group (tab indicatior) color to gray
-        let g:indentLine = '▏'  "sets the tab display character
-
-        let mapleader = ' '
-        map ; :
-        map <leader>p "0p
-        map <leader>P "0P
-        map <leader>bp :bp<CR>
-        map <leader>bn :bn<CR>
- 
-        let g:vimtex_view_general_viewer = 'zathura'
-        " set spell                 " enable spell check (may need to download language package)
-        " copen opens the quick fix list, which is very useful after the :make command. The quick fix list will parse all the errors, and cn, cp, cfirst and clast will take you to the 
-        " next, prev, first, and last error.
-
-        "argdo, cdo, bdo run commands in all args, quick fix list panes and buffers
-        " NORM runs motions, so NORM ggdG  would delete the whole file and 
-        " bdo NORM ggdG would delete the contents of every file open in a buffer.
-
-        lua << EOF
-           require("conform").setup({
-            formatters_by_ft = {
-                java = { "google-java-format" }
-            },
-           })
-        EOF
-
-        lua << EOF
-          require("lspconfig").clangd.setup({})
-        EOF
-
-        lua << EOF
-            vim.keymap.set("n", "<space>f", function() 
-                require("conform").format({ async = true })
-                vim.notify("formatted")
-            end)
-
-
-          -- enable tree sitt highlighting
-          require'nvim-treesitter.configs'.setup {
-             highlight = {
-                 enable = true,
-             },
-          }
-
-        EOF
-
-        lua << EOF
-          -- error highlighting
-          require("lspconfig").pyright.setup({})
-
-          vim.diagnostic.config({
-            virtual_text = true,
-            underline = true,
-            signs = true,
-            update_in_insert = false,
-          })
-
-        EOF
-
-        lua << EOF
-          local null_ls = require("null-ls")
-
-          null_ls.setup({
-            sources = {
-              null_ls.builtins.diagnostics.eslint,
-              null_ls.builtins.diagnostics.flake8,
-            },
-          })
-        EOF
-
-        lua << EOF
-          require("lspconfig").jdtls.setup({
-            cmd = { "jdtls" },
-            root_dir = require("lspconfig.util").root_pattern(
-              "pom.xml",
-              "build.gradle",
-              ".git"
-            ),
-          })
-        EOF
-
-        lua << EOF
-          require("oil").setup{
-            view_options = {
-              show_hidden = true
-            }
-          }
-          vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = 'Open parent directory' })
-        EOF
-
-        lua << EOF
-          require("coverage").setup({
-            commands = true, -- create commands
-            highlights = {
-                    -- customize highlight groups created by the plugin
-                    covered = { fg = "#C3E88D" },   -- supports style, fg, bg, sp (see :h highlight-gui)
-                    uncovered = { fg = "#F07178" },
-            },
-            signs = {
-                    -- use your own highlight groups or text markers
-                    covered = { hl = "CoverageCovered", text = "▎" },
-                    uncovered = { hl = "CoverageUncovered", text = "▎" },
-            },
-            summary = {
-                    -- customize the summary pop-up
-                    min_coverage = 80.0,      -- minimum coverage threshold (used for highlighting)
-            },
-            lang = {
-                    -- customize language specific settings
-            },
-        })
-
-        EOF
-
-        lua << EOF
-          local builtin = require('telescope.builtin')
-          local find_files = function() 
-            builtin.find_files{ hidden = true }
-          end
-          vim.keymap.set('n', "<leader>ts", find_files, { desc = 'Telescope find files' })
-          vim.keymap.set('n', '<leader>tt', builtin.live_grep, { desc = 'Telescope live grep' })
-          vim.keymap.set('n', '<leader>tb', builtin.buffers, { desc = 'Telescope buffers' })
-        EOF
-
-        lua << EOF
-          local codesnap = require("codesnap")
-          codesnap.setup{
-            show_line_number = true,
-            snapshot_config = { 
-              background = "#0C3321",
-              watermark = {
-                content = ""
-              }
-            }
-          }
-
-          vim.keymap.set('v', '<leader>cs', '<cmd>CodeSnap<cr>', { desc = 'Copy a snapshot of the selected text to clipboard'} )
-
-        EOF
-
-      '';
-      packages.packages = with pkgs.vimPlugins; {
-        #loaded on launch
-        start = [ 
-          vim-surround
-          vim-sleuth #matches vim settings to open file e.g. no mixing tabs
-          awesome-vim-colorschemes
-          codesnap-nvim
-          oil-nvim
-          vim-commentary
-          coq_nvim
-          vimtex 
-          undotree
-          telescope-nvim
-          markdown-preview-nvim
-          conform-nvim
-          nvim-treesitter.withAllGrammars
-          nvim-lspconfig
-          null-ls-nvim
-          vim-matchup #better % matching
-          nvim-coverage
-          # nvim‑tresitter-context
-        ];
-      };
-    };
   };
 
   programs.foot = {

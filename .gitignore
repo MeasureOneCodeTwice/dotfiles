@@ -2,6 +2,8 @@
 !dv_keymap.xkb
 !sway
 !sway/**/*
+!nvim
+!nvim/**/*
 !nixos/
 !README.md
 !.gitignore

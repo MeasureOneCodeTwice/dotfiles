@@ -1,3 +1,17 @@
+set $BORDER_WIDTH 3
+
+set $FONT "Inconsolata-Regular"
+set $FONT_COLOUR "#E8E6EFFF"
+set $BRIGHT_FONT_COLOUR  "#FFFFFFFF"
+
+set $DARK_GREEN "#1F361CFF"
+set $DARKER_GREEN "#245628FF"
+set $HILIGHT_GREEN "#9BAE7AFF"
+
+set $BACKGROUND "#000000F0"
+
+set $BLACK "#00000000"
+
 include ./applications
 include ./sway
 include ./waybar

@@ -1,1 +1,12 @@
-set $myfuzzel fuzzel -I --font=Inconsolata-Regular --background=000000d0 --selection-color=ffffffd0 --selection-text-color=000000ff --border-color=ffffffd0 --text-color=ffffffff --match-color=81f775ff --selection-match-color=079f01ff --prompt-color=ffffffff --input-color=ffffffff
+set $myfuzzel fuzzel -I \
+--background=$BACKGROUND \
+--selection-color=$HILIGHT_GREEN \
+--match-color=$DARK_GREEN \
+--border-width=$BORDER_WIDTH \
+--border-color=$HILIGHT_GREEN \
+--font=$FONT \
+--selection-match-color=$DARK_GREEN \
+--selection-text-color=$BRIGHT_FONT_COLOUR \
+--text-color=$FONT_COLOUR \
+--prompt-color=$FONT_COLOUR \
+--input-color=$FONT_COLOUR 

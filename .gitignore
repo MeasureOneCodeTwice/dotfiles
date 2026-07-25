@@ -1,0 +1,6 @@
+*
+!dv_keymap.xkb
+!sway/
+!README.md
+!nixos/
+!.gitignore

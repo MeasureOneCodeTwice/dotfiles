@@ -44,11 +44,7 @@ set $Shift2 at
 set $Shift3 numbersign 
 set $Shift4 dollar 
 set $Shift5 percent
-# set $Shift6 asciicircum
-# set $Shift7 ampersand
-# set $Shift8 asterisk
-# set $Shift9 parenleft
-# set $Shift0 parenright
+
 #focused inactive is the window that was last focused (but not currently focused)
 #                       outline bg      textCol  ???    window outline
 client.focused          #FFFFFF #000000 #FFFFFF #000000 #FFFFFF
@@ -71,16 +67,16 @@ set $menu $myfuzzel | xargs swaymsg exec --
 set $lock ~/.scripts/lock_desktop
 
 #Background
-output * background ~/.config/sway/shelves.png stretch
+output * background ~/.config/sway/backgrounds/leaves.jpg stretch
 
 
-# lock screen after 300 seconds of inactivity, turn off
-# displays after another 300 seconds. turn screen back on when
-# resumed. 
-exec swayidle -w \
-         timeout 300 '$lock' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep '$lock
+# # lock screen after 300 seconds of inactivity, turn off
+# # displays after another 300 seconds. turn screen back on when
+# # resumed. 
+# exec swayidle -w \
+#          timeout 300 '$lock' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep '$lock
 
 
 # You can get the names of your inputs by running: swaymsg -t get_inputsw
@@ -99,13 +95,13 @@ bindsym $mod+Shift+v exec cliphist list | sed 's/\t/ /' | $myfuzzel --dmenu | se
 # bindsym Print exec screenshot
 # bindsym Shift+Print exec selective_screenshot
 # bindsym $mod+Print exec window_screenshot 
+# bindsym $mod+p exec /home/logan/Documents/screenshot-utils/selective_screenshot
 
 ### Application launchers
 bindsym $mod+l exec $lock
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
 
-bindsym $mod+p exec /home/logan/Documents/screenshot-utils/selective_screenshot
 
 
 ### F key bindings
@@ -125,13 +121,13 @@ bindsym shift+XF86AudioLowerVolume exec amixer sset 'Master' 1%-
 
 bindsym XF86AudioMute        exec amixer sset 'Master' toggle
 
-    bindsym $mod+q kill
+bindsym $mod+q kill
 
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+escape exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+escape exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -238,9 +234,10 @@ bar {
 
     colors {
         statusline #ffffff
-        background #00000000
-        inactive_workspace #FFFFFF #000000 #FFFFFF
-        focused_workspace #FFFFFF #FFFFFF #000000
+        background #000000F0
+        #                  border    fill      text
+        inactive_workspace #000000F0 #000000F0 #FFFFFFFF
+        focused_workspace  #000000F0 #000000F0 #245628FF
     }
 }
 include /etc/sway/config.d/*

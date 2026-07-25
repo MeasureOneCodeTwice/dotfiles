@@ -152,6 +152,11 @@ in
     zoom-us
     arduino-ide
     pavucontrol
+    unstable.spotify-player
+    unstable.spotifyd
+
+    #nvim
+    bash-language-server
 
     #desktop environment specific packages
     wl-clipboard
@@ -170,7 +175,6 @@ in
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
   ];
-  
   
     # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

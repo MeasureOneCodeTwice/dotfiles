@@ -131,13 +131,14 @@ end)
 -- LSP
 -- vim.lsp.config("clangd", {})
 -- vim.lsp.config("pyright", {})
--- vim.lsp.config("bashls", {})
+vim.lsp.config("bashls", {})
 
 -- vim.lsp.config("jdtls", {
 --   cmd = { "jdtls" },
 --   root_dir = vim.fs.root(0, { "pom.xml", "build.gradle", ".git" }),
 -- })
 -- vim.lsp.enable({ "clangd", "pyright", "jdtls", "bashls" })-- diagnostics
+vim.lsp.enable({ "bashls" })-- diagnostics
 
 vim.diagnostic.config({
    virtual_text = true,

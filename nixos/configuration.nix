@@ -155,7 +155,6 @@ in
     arduino-ide
     pavucontrol
     unstable.spotify-player
-    unstable.spotifyd
     alacritty
 
     #nvim

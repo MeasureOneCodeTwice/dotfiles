@@ -9,6 +9,9 @@
 !desktop_files
 !desktop_files/**/*
 
+!tmux
+!tmux/**/*
+
 !nixos/
 !README.md
 !.gitignore

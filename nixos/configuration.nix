@@ -156,6 +156,7 @@ in
     pavucontrol
     unstable.spotify-player
     unstable.spotifyd
+    alacritty
 
     #nvim
     bash-language-server

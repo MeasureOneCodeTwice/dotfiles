@@ -7,7 +7,8 @@
 #          before-sleep '$lock
 
 
-
+set $term alacritty
+set $menu $myfuzzel
 
 ### Application launchers
 bindsym $mod+l exec $lock

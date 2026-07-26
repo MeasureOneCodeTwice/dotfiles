@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Spotify
-Exec=foot -- sh -c 'cowsay -e Oo -T U loading && spotify_player'
+Exec=alacritty --title Spotify -e sh -c 'cowsay -f stegosaurus loading && spotify_player'
 Categories=Sound

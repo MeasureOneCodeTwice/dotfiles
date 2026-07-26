@@ -41,13 +41,6 @@ map("n", "<leader>P", '"0P')
 map("n", "<leader>bp", "<cmd>bp<CR>")
 map("n", "<leader>bn", "<cmd>bn<CR>")
 
--- =========================
--- Colorscheme
--- =========================
-vim.api.nvim_set_hl(0, "Comment", { italic = true, fg = "Gray" })
-vim.api.nvim_set_hl(0, "Conceal", { fg = "DarkGray" })
-
-vim.g.indentLine_char = "▏"
 
 -- =========================
 -- lazy.nvim bootstrap
@@ -114,7 +107,20 @@ require("lazy").setup({
 -- =========================
 -- Plugin configs
 -- =========================
+
+-- =========================
+-- Colorscheme
+-- =========================
 vim.cmd([[colorscheme gruvbox]])
+
+vim.api.nvim_set_hl(0, "Comment", { italic = true, fg = "Gray" })
+vim.api.nvim_set_hl(0, "Conceal", { fg = "DarkGray" })
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" }) 
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }) 
+
+vim.g.indentLine_char = "▏"
+
 
 -- conform
 require("conform").setup({

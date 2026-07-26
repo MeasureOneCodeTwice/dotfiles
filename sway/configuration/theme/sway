@@ -9,8 +9,8 @@ default_border pixel $BORDER_WIDTH
 titlebar_border_thickness 0
 title_align center
 #focused inactive is the window that was last focused (but not currently focused)
-#                       outline        bg          textCol        ???            window outline
-client.focused          $HILIGHT_GREEN $BACKGROUND $HILIGHT_GREEN $HILIGHT_GREEN $HILIGHT_GREEN
+#                       outline          bg          textCol        ???            window outline
+client.focused          $HILIGHT_GREEN   $BACKGROUND $HILIGHT_GREEN $HILIGHT_GREEN $HILIGHT_GREEN
 client.focused_inactive $DARKER_GREEN    $BACKGROUND $FONT_COLOUR   #FF0000        $DARK_GREEN
 client.unfocused        $DARKER_GREEN    $BACKGROUND $FONT_COLOUR   #FF0000        $DARK_GREEN 
 #Not sure what column 4 means. Its colour appears when there is a pane in a window

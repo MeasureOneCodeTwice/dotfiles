@@ -12,6 +12,8 @@
 !tmux
 !tmux/**/*
 
-!nixos/
+!nixos
+!nixos/**/*
+
 !README.md
 !.gitignore

@@ -102,6 +102,7 @@ in
     alacritty
 
     #nvim
+    unstable.neovim
     bash-language-server
 
     #desktop environment specific packages

@@ -19,6 +19,9 @@
   #802-1x.wifi-sec.key-mgmt wpa-eap
   networking.networkmanager.enable = true;
 
+  # enable pam for hyprlock
+  security.pam.services.hyprlock = {};
+
   #audio
   # security.rtkit.enable = true;
   # services.pipewire = {
@@ -83,7 +86,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    vimAlias = true;
+    vimAlias = false;
   };
 
   #sway window manager config
@@ -92,9 +95,18 @@
 	wrapperFeatures.gtk = true;
   };
 
-  # List services that you want to enable:
+
+  # Get bash to send OSC 7 signal on directory change
+  # to update tmux status line.
+  programs.bash.interactiveShellInit = ''
+    __update_terminal_cwd() {
+      printf '\033]7;file://%s%s\033\\' "$HOSTNAME" "$PWD"
+    }
+
+    PROMPT_COMMAND=(__update_terminal_cwd "''${PROMPT_COMMAND[@]}")
+  '';
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  programs.ssh.startAgent = true;
+  services.openssh.enable = false;
+  programs.ssh.startAgent = false;
 }

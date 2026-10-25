@@ -11,6 +11,6 @@ bar {
         background $BACKGROUND
         #                  border      fill        text
         inactive_workspace $BACKGROUND $BACKGROUND $FONT_COLOUR
-        focused_workspace  $BACKGROUND $BACKGROUND $DARKER_GREEN
+        focused_workspace  $BACKGROUND $BACKGROUND $HILIGHT_GREEN
     }
 }

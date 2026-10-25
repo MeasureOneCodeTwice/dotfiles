@@ -135,16 +135,19 @@ map("n", "<space>f", function()
 end)
 
 -- LSP
--- vim.lsp.config("clangd", {})
+vim.lsp.config("clangd", {})
 -- vim.lsp.config("pyright", {})
 vim.lsp.config("bashls", {})
+vim.lsp.config("ts_ls", {})
+
+
 
 -- vim.lsp.config("jdtls", {
 --   cmd = { "jdtls" },
 --   root_dir = vim.fs.root(0, { "pom.xml", "build.gradle", ".git" }),
 -- })
 -- vim.lsp.enable({ "clangd", "pyright", "jdtls", "bashls" })-- diagnostics
-vim.lsp.enable({ "bashls" })-- diagnostics
+vim.lsp.enable({ "clangd", "bashls", "ts_ls" })-- diagnostics
 
 vim.diagnostic.config({
    virtual_text = true,
@@ -159,17 +162,17 @@ require("nvim-treesitter").setup({
    highlight = { enable = true },
 })
 
-require("nvim-eslint").setup({
-   settings = {
-      -- Monorepo: eslint.config.js and its node_modules live in kross/src/,
-      -- one level above each package (backend/, webserver/). The default
-      -- workingDirectory (workspace/git root) can't see child node_modules,
-      -- so pin it to the nearest package.json ancestor per buffer instead.
-      workingDirectory = function(bufnr)
-         return { directory = vim.fs.root(bufnr, { "package.json" }) }
-      end,
-   },
-})
+-- require("nvim-eslint").setup({
+--    settings = {
+--       -- Monorepo: eslint.config.js and its node_modules live in kross/src/,
+--       -- one level above each package (backend/, webserver/). The default
+--       -- workingDirectory (workspace/git root) can't see child node_modules,
+--       -- so pin it to the nearest package.json ancestor per buffer instead.
+--       workingDirectory = function(bufnr)
+--          return { directory = vim.fs.root(bufnr, { "package.json" }) }
+--       end,
+--    },
+-- })
 
 -- oil
 require("oil").setup({

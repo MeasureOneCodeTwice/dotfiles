@@ -5,7 +5,7 @@ let
   };
 in
 {
-# Allow unfree packages
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
@@ -45,8 +45,9 @@ in
         # rstudio
 
         clang
-        clang-tools
-        gcc
+        unstable.clang-tools
+        unstable.gcc
+        cmake
         gnumake
         valgrind
         gdb
@@ -84,6 +85,7 @@ in
     texliveFull
 
     #graphical applications
+    hyprlock
     firefox
     thunderbird
     telegram-desktop
@@ -101,6 +103,10 @@ in
     unstable.spotify-player
     alacritty
 
+    #vimgolf
+    vimgolf
+    vim
+
     #nvim
     unstable.neovim
     bash-language-server
@@ -112,8 +118,7 @@ in
     alsa-utils
     brightnessctl
     wl-clipboard #nvim uses to interface with clipboard
-    slurp
-    grim
+    sway-contrib.grimshot
 
     #network
     tshark

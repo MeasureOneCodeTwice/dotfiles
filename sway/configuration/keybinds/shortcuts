@@ -1,13 +1,8 @@
 ### Application Variables
 set $term foot
 set $menu $myfuzzel
-# set $lock ~/.scripts/lock_desktop
 
-#NOT IMPLEMENTED
-# bindsym Print exec screenshot
-# bindsym Shift+Print exec selective_screenshot
-# bindsym $mod+Print exec window_screenshot 
-# bindsym $mod+p exec /home/logan/Documents/screenshot-utils/selective_screenshot
+bindsym $mod+p exec grimshot savecopy anything ~/screenshots/"$(date +'%G-%m-%d-%H:%M:%S')".png
 
 ### F key bindings
 #brightness controls
@@ -28,9 +23,7 @@ bindsym XF86AudioMute        exec amixer sset 'Master' toggle
 
 bindsym $mod+q kill
 
+bindsym $mod+escape exec hyprlock
+
 # Reload the configuration file
 bindsym $mod+Shift+c reload
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+escape exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
-

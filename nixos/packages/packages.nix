@@ -5,33 +5,22 @@ let
   };
 in
 {
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     ./package-configuration.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = 
-  let 
-    developmentPackages        = (import ./groups/development.nix);
-    pythonPackages             = (import ./groups/python.nix);
-    cppPackages                = (import ./groups/cpp.nix);
-    graphicalPackages          = (import ./groups/graphical.nix);
-    javaPackages               = (import ./groups/java.nix);
-    typescriptPackages         = (import ./groups/typescript.nix);
-    networkDevelopmentPackages = (import ./groups/network-dev.nix);
-    basicTerminalPackages      = (import ./groups/terminal-basics.nix);
-    desktopEnvironmentPackages = (import ./groups/desktop-environment.nix);
-    miscPackages               = (import ./groups/misc.nix);
-  in
-    developmentPackages        pkgs unstable ++
-    pythonPackages             pkgs {}       ++
-    cppPackages                pkgs unstable ++
-    graphicalPackages          pkgs unstable ++
-    javaPackages               pkgs {}       ++
-    typescriptPackages         pkgs unstable ++
-    networkDevelopmentPackages pkgs unstable ++
-    basicTerminalPackages      pkgs unstable ++ 
-    desktopEnvironmentPackages pkgs {}       ++
-    miscPackages               pkgs {};
+    (import ./groups/desktop-environment.nix) pkgs {}       ++
+    (import ./groups/terminal-basics.nix)     pkgs unstable ++
+    (import ./groups/development.nix)         pkgs unstable ++
+    (import ./groups/network-dev.nix)         pkgs unstable ++
+    (import ./groups/typescript.nix)          pkgs unstable ++
+    (import ./groups/graphical.nix)           pkgs unstable ++
+    (import ./groups/python.nix)              pkgs {}       ++
+    (import ./groups/cpp.nix)                 pkgs unstable ++ 
+    (import ./groups/java.nix)                pkgs {}       ++
+    (import ./groups/misc.nix)                pkgs {};
 }

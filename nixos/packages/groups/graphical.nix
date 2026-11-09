@@ -11,7 +11,6 @@ unstable:
     swayimg #everything but pdf viewer
     zathura #pdf viewer
     obsidian
-    vscode
     libreoffice-qt6-fresh
     anki
     zoom-us
@@ -19,5 +18,5 @@ unstable:
     pavucontrol
     unstable.spotify-player
     alacritty
-
+    qbittorrent
 ]

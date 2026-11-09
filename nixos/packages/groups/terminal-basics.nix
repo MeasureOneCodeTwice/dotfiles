@@ -10,4 +10,5 @@ unstable:
     ripgrep
     fd
     ffmpeg
+    wget
 ]

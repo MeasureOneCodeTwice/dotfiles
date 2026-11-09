@@ -13,14 +13,15 @@ in
 
 
   environment.systemPackages = 
-    (import ./groups/desktop-environment.nix) pkgs {}       ++
+    (import ./groups/desktop-environment.nix) pkgs unstable       ++
     (import ./groups/terminal-basics.nix)     pkgs unstable ++
     (import ./groups/development.nix)         pkgs unstable ++
     (import ./groups/network-dev.nix)         pkgs unstable ++
-    (import ./groups/typescript.nix)          pkgs unstable ++
+    # (import ./groups/typescript.nix)          pkgs unstable ++
     (import ./groups/graphical.nix)           pkgs unstable ++
-    (import ./groups/python.nix)              pkgs {}       ++
+    (import ./groups/python.nix)              pkgs unstable       ++
     (import ./groups/cpp.nix)                 pkgs unstable ++ 
-    (import ./groups/java.nix)                pkgs {}       ++
-    (import ./groups/misc.nix)                pkgs {};
+    # (import ./groups/java.nix)                pkgs unstable       ++
+    (import ./groups/misc.nix)                pkgs unstable ++
+    (import ./groups/core.nix)                pkgs unstable;
 }

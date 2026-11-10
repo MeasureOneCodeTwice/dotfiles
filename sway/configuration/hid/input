@@ -1,7 +1,3 @@
-input "type:keyboard" {
-    xkb_file ~/.config/dv_keymap.xkb
-}
-
 #dwt disables trackpad while typing 
 #tap allows trackpad taps to click
 input type:touchpad {

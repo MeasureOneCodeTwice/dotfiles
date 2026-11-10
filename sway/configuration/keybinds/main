@@ -1,4 +1,4 @@
-set $mod Super_L
+set $mod Mod4
 
 include ./mindow_management
 include ./shortcuts

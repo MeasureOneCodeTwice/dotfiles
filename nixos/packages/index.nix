@@ -3,7 +3,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./core/index.nix
+    ./keyd/index.nix
     ./cpp/index.nix
     ./desktop-environment/index.nix
     ./development/index.nix

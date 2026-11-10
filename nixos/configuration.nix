@@ -24,11 +24,6 @@
     packages = with pkgs; [];
   };
 
-  #To get electron to respect custom keymap. 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-  
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
   programs.ssh.startAgent = false;

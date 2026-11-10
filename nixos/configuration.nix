@@ -2,6 +2,7 @@
 {
   imports = [
     ./packages/index.nix
+    ./etc-nixos-configuration.nix
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -31,4 +32,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
   programs.ssh.startAgent = false;
+
+
+
 }

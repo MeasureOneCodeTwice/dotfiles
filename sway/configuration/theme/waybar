@@ -3,6 +3,8 @@ bar {
     position top
     font $FONT
 
+    strip_workspace_numbers yes
+
     # When the status_command prints a new line to stdout, swaybar updates.
     status_command ~/.config/sway/status_command.sh
 
@@ -13,4 +15,5 @@ bar {
         inactive_workspace $BACKGROUND $BACKGROUND $FONT_COLOUR
         focused_workspace  $BACKGROUND $BACKGROUND $HILIGHT_GREEN
     }
+
 }

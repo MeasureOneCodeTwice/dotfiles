@@ -14,14 +14,14 @@
 	(import ./layout-config/dvorak.nix {}) +
 	(import ./layout-config/function-layer.nix {}) +
 	''
-	  [global]
+          [global]
           default_layout = dvorak
-
-	  [dvorak:layout]
-	  capslock = layer(control)
-	  leftcontrol = capslock 
-
-	  rightalt = layer(function_layer)
+          
+          [dvorak:layout]
+          capslock = layer(control)
+          leftcontrol = capslock 
+          
+          rightalt = layer(function_layer)
 	'';
       };
     };

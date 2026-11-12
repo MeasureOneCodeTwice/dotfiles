@@ -15,5 +15,8 @@
 !nixos
 !nixos/**/*
 
+!hypr
+!hypr/**/*
+
 !README.md
 !.gitignore

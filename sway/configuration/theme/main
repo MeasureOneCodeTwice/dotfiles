@@ -12,6 +12,6 @@ set $BACKGROUND "#000000B0"
 
 set $BLACK "#00000000"
 
-include ./applications
+include ./fuzzel
 include ./sway
 include ./waybar

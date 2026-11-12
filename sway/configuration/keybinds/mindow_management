@@ -68,7 +68,8 @@ bindsym $mod+percent           move container to workspace 10:%
 # $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
 bindsym $mod+b splith
-bindsym $mod+v splitv
+bindsym $mod+w splitv
+bindsym $mod+v focus parent
 
 # Switch the current container between different layout styles
 bindsym $mod+7 layout stacking
@@ -80,7 +81,6 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Move focus to the parent container
-# bindsym $mod+a focus parent
 #
 # Scratchpad:
 #

@@ -1,6 +1,4 @@
 # from https://github.com/rvaiya/keyd/blob/master/layouts/dvorak
-{}:
-''
 [dvorak:layout]
 
 ' = -
@@ -96,4 +94,3 @@ w = <
 x = Q
 y = F
 z = :
-''

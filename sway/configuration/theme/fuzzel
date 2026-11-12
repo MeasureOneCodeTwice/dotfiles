@@ -1,4 +1,4 @@
-set $myfuzzel fuzzel -I \
+set $myfuzzel fuzzel -F name,keywords -I \
 --background=$BACKGROUND \
 --selection-color=$HILIGHT_GREEN \
 --match-color=$DARK_GREEN \

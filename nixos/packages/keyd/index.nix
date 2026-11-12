@@ -11,8 +11,8 @@
       default = {
 	ids = [ "*" ]; 
 	extraConfig = 
-	(import ./layout-config/dvorak.nix {}) +
-	(import ./layout-config/function-layer.nix {}) +
+	builtins.readFile ./layout-config/dvorak +
+	builtins.readFile ./layout-config/function-layer +
 	''
           [global]
           default_layout = dvorak
